@@ -1,0 +1,70 @@
+Back end:
+- Provee las API desde el servidor.
+- Donde se guarda la información cruda.
+- Las API procesan la información según lo que el usuario solicita.
+- Endpoint: puerta de entrada para la API (la URL específica para acceder a cierta información de la API).
+- Las API consumen la base de datos y extraen la información según los diversos Endpoints.
+- Se usa JS para ciertas soluciones de backend, no todas y no de la misma manera.
+
+Node:
+- Node permite usar funciones de backend.
+- Tiene una característica particular: se maneja por módulos que se administran por NPM.
+- NPM significa node package manager.
+- Así como tenemos un paquete global, especial para SASS, también existen paquetes de uso exclusivo para un proyecto. 
+(Como Moment.js -para ver fechas- o LoadAsh.js (?) a través de un cdm). - Cuando visitamos Moment/LoadAsh, tenemos que instalarlo mediante npm install (averiguar la diferencia).
+- Hay otra alternativa que se llama Yarn, y es igual de válida (solo que lleva otros argumentos).
+- node_modules tiene todas las dependencias de node que uso en mi proyecto.
+
+- ¿Cómo se ejecuta Node?
+- Es un entorno en el se ejecuta JS para usarse como servidor, paquetes, servicios, compiladores, etc.
+- Básicamente vamos a crear un servidor, exponemos el punto de entrada, a través del cual nuestro código front-end va a acceder.
+- Cuando tengamos nuestra propia API hecha en node, vamos a ejecutar un servidor local en Node, que exponga esa información y vamos a consumirla mediante nuestro front end. Vamos a hacer un fetch hacia una dirección específica (endpoint), que permita acceder a la info.
+
+1. Creo un archivo index.js con el comando touch index.js y lo abro con code index.js [en Git Bash] y le agrego un console.log de prueba. [se limpia la terminal con "clear"]
+    - No necesita un HTML (como en front end) porque Node funciona distinto (porque es back end). Entiende que es un servidor y para ejecutar código, necesito la fórmula:
+           npm + [a cuál te referís] + [argumentos]
+    - Para ejecutar un archivo en Node, necesito algo similar: 
+            node [nombre de archivo]
+
+2. Pruebas de concepto para saber cómo funciona:
+- Hay varias formas de ejecutar código JS en node:
+        * La forma más común es mediante archivos que se compilan.
+        Otro método es REPL (bucle de lectura y evaluación): básicamente, la terminal.
+        Otro con el método eval, que ejecuta todo el código de JS que pongas adentro (que expone el código a vulnerabilidades).
+
+- En front-end, usamos las variables globales de document (que hace referencia al dom propiamente dicho) y window (que hace referencia al navegador). En back-end, ninguna de estas dos existen, por lo que no podemos usarlas en node.
+No obstante, en Node existen tres variables globales únicas a backend:
+
+        - process: hace referencia a la instancia de node que estoy corriendo. En la terminal, cuando hacemos "node index.js", estoy creando y corriendo un proceso de node. Cuando hacemos "npm sarasa", estoy corriendo un proceso y process hará referencia a eso.
+            Si hago un console.log(process), aparecen objetos, arrays (la misma estructura de JS) con propiedades, buleanos, funciones, etc. 
+            * Process es un objeto enorme que tiene una cant de info correspondiente al proceso que ejecuto en ese momento, que tiene un montón de propiedades:
+                - console.log(process.id) me muestra la id del proceso.
+                Propiedades que nos interesan son:
+                - .argv me muestra los argumentos que fueron dados a este proceso. (por ejemplo, el argumento de sass es npm sass archivo acción). Los argumentos con los que se ejecutan este proceso, si no tenemos nada, por defecto me muestra la ruta. Si yo escribo en la terminal "node index.js test", me aparece test en el array de los argumentos. Me permite manipular un poco lo que sucede. 
+                    - Como es un array, puedo llamarlo por el índice: console.log(process.argv[2]). Incluso podemos usarlo en una string template. 
+                    - NPM permite acceder a los archivos dentro de la computadora, por eso podemos usarlo.
+                    - ¿Por qué sirve? Permite manejar el entorno de desarrollo, para diferenciarlo del código de producción (más abajo).
+                - .env
+                    - Para evitar usar la instancia de producción, conviene usar entornos de desarrollo (el de pruebas) y de producción (el que usa el usuario), diferencidos para no impactar al de producción:
+                        console.log('ENV_DEV ENV_PROD'); (environment development, environment production)
+                    - Es el mismo entorno, que se ejecuta de dos maneras para hacer pruebas y no impactarlo.
+                    Para pasar la API de desarrollo a producción, hay que modificar cada endpoint. Para evitar hacerlo manualmente, se usan las variables de entorno (env):
+                        (en terminal) node index.js ENV_DEV
+                        (en terminal) node index.js ENV_PROD
+                    - Eso permite agregar el argumento. En el index.js, agrego la const env = process.argv[2]; El valor de la const será el que yo defina en la terminal (ver ejercicio01.js). 
+                    [Lo anterior sirve a modo de prueba, para establecerlo como argumento/parámetro, como sufijo del proceso.]
+                    
+                    - .env es un objeto también, por lo que puedo llamar a una de sus propiedades y definirlo. La forma más habitual de definir al entorno es (en terminal) 
+                        NODE_ENV=dev node index.js
+                    Se usa como un prefijo en realidad, que va a quedar guardado en el objeto NODE_ENV.
+                    * Cuando ejecutamos un proceso, lo que pongamos después del proceso (nombre de archivo) es un argumento o parámetro de ese proceso; lo que pongamos antes, es una variable que estoy sumando al objeto del proceso (entorno en este caso);
+                    NODE_ENV=dev node index.js queso
+                    [variable]   [   proceso  ] [argumento]
+                    - ¿Para qué cambiamos los entornos?
+                        Cuando uso entornos de desarrollo, me permiten verlos en vivo, aunque no sea performante ni veloz. Este solamente estará bien para ver los cambios y que lo compile de una forma simple, no la más performante.                        
+        - global
+
+
+- module.exports y exports
+
+
