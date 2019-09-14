@@ -1,0 +1,31 @@
+¡Conquistemos la terminal!
+
+[gitbash]
+
+argumentos ==> Parámetros que les pasamos al proceso que ejecutamos en la terminal (en Node)
+
+cd .. ==> voy a la carpeta anterior
+
+ls ==> veo todas las carpetas y los archivos
+
+clear ==> borra todo lo que he escrito en la terminal
+
+cd [carpeta]/ ==> entro a la carpeta que quiero
+
+mkdir [carpeta] ==> crea una carpeta en la ruta donde estoy.
+
+code . ==> Abre una nueva instancia de Visual Code con la carpeta en la que estoy (puede tirar errores, porque depende de Visual Studio Code)
+
+open . ==> Abre la carpeta en el explorador de archivos (finder) (solo mac)
+explore . ==> Abre la carpeta en el explorador de archivos (solo windows)
+
+touch [archivo.extensión] ==> Crea archivos
+code [archivo.extensión] ==> Abre el archivo en visual code
+open [archivo.extensión] ==> Abre el archivo (en el programa determinado, html en el navegador)
+
+node [archivo.extensión] ==> ejecuta el archivo (es decir, el proceso)
+
+rm -rf [archivo.extensión] ==> borra el archivo
+mv [archivo.extensión] [nuevoNombreArchivo.extensión] ==> cambia el nombre de archivo (primero el viejo después el nuevo)
+
+

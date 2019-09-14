@@ -1,0 +1,31 @@
+2. Dependencias (o paquetes y módulos)
+- Se puede entender por Dependencia un pedazo de código externo que sirve para mi proyecto interno (loadash.js y moment.js, las más comunes).
+Se dividen en módulos y paquetes. La diferencia radica en el origen de los archivos.
+
+- El módulo es el código que nosotras desarrollamos en nuestro mismo proyecto, que funciona en diversos archivos, pero que se guarda de manera externa al archivo en el que se encuentra. Podemos tener varios archivos bien organizados para poder escalarlos. Una forma de dividirlos es en módulos. Hay varias maneras:  componentes, páginas, contenedores, etc. Pero las funcionalidades globales generadas por nosotras se dividen en módulos.
+
+- El paquete provene de una fuente externa. Tiene la misma función: es un pedazo de código al que le pasamos parámetros y devuelve cosas, pero no está en mi proyecto/no lo codeé yo (por ejemplo, loadAsh y Moment). Estas son funciones que reciben parámetros y me devuelven cosas.
+    - Para instalar paquetes, es necesario utilizar el npm (administra el uso de los recursos externos o paquetes).
+    - Los paquetes se pueden instalar de forma global en la computadora, así que cualquier carpeta del sistema puede acceder y utilizarlo (como sass). Se hace cuando el paquete no formará parte del proyecto. Los archivos sass no pasan a producción, sino sus compilaciones a css. Es una herramienta y nada más.
+    - Los que formarán parte del producto final, como moment y loadash, que da un formato de fecha, se instalan localmente en cada proyecto. 
+    - Para instalarlos de forma local, primero debo escribir en terminal:
+            npm init
+        Esto inicializa npm y me guiará por el proceso que inicializa npm en mi repositorio. Debo responder ciertas preguntas.
+        - entry point, desde donde se ejecuta todo [index.js en cierta clase]. No hace falta responder todo, sino terminar el proceso.
+        - Una vez terminado, se crea un archivo package.json, que es un .json que tiene información correspondiente al proceso que estoy corriendo, al paquete de cosas de node. Puedo cambiar los detalles si quiero.
+            - tiene un objeto que se llama script.
+            - guarda la información de los paquetes e información que guarda mi proyecto.
+        - Una vez inicializado, puedo instalar los paquetes que yo quiera. Todo paquete dice desde su sitio web cómo instalarlo. Por ejemplo:
+            - npm install moment --save
+                - Una vez instalado, en el archivo .json, aparece una carpeta que se llama dependencies e incluirá "moment" con un valor que incluye la versión de moment en el proyecto. 
+                - Cada vez que ejecute el json todo lo que esté dentro de dependencies pasará a ser parte del proyecto.
+                - Cuando comparto mi proyecto, el usuario descarga el producto, y si el json está bien, debe ejecutar npm install. Le permite descargar los node_modules que figuran en dependencies.
+                * Cuidado: la carpeta node_modules jamás debe versionarse. Porque pesa mucho y puede causar problemas de versiones. Para evitarlo, la agrego a mi repo:
+                en .gitignore, escribir /node_modules
+            También aparece una carpeta que se llama node_modules
+    - Para utilizar un paquete desde un archivo, escribo:
+                const moment = require('moment')
+        - No escribo una ruta porque no es necesario
+
+    -Desde la página de npm, podemos encontrar un montón de paquetes que hacen cosas por vos. Por ejemplo, el carrosel (te dice cómo instalarlo y cómo utilizarlo)
+        - No hace falta recordar todos los parámetros, pero los vas a ir aprendiendo 

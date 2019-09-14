@@ -20,6 +20,10 @@ Node:
 - Básicamente vamos a crear un servidor, exponemos el punto de entrada, a través del cual nuestro código front-end va a acceder.
 - Cuando tengamos nuestra propia API hecha en node, vamos a ejecutar un servidor local en Node, que exponga esa información y vamos a consumirla mediante nuestro front end. Vamos a hacer un fetch hacia una dirección específica (endpoint), que permita acceder a la info.
 
+* Cuando ejecutamos un proceso, lo que pongamos después del proceso (nombre de archivo) es un argumento o parámetro de ese proceso; lo que pongamos antes, es una variable que estoy sumando al objeto del proceso (entorno en este caso);
+    NODE_ENV=dev   node index.js    queso
+    [variable]     [   proceso  ]   [argumento]
+
 1. Creo un archivo index.js con el comando touch index.js y lo abro con code index.js [en Git Bash] y le agrego un console.log de prueba. [se limpia la terminal con "clear"]
     - No necesita un HTML (como en front end) porque Node funciona distinto (porque es back end). Entiende que es un servidor y para ejecutar código, necesito la fórmula:
            npm + [a cuál te referís] + [argumentos]
@@ -57,14 +61,16 @@ No obstante, en Node existen tres variables globales únicas a backend:
                     - .env es un objeto también, por lo que puedo llamar a una de sus propiedades y definirlo. La forma más habitual de definir al entorno es (en terminal) 
                         NODE_ENV=dev node index.js
                     Se usa como un prefijo en realidad, que va a quedar guardado en el objeto NODE_ENV.
-                    * Cuando ejecutamos un proceso, lo que pongamos después del proceso (nombre de archivo) es un argumento o parámetro de ese proceso; lo que pongamos antes, es una variable que estoy sumando al objeto del proceso (entorno en este caso);
-                    NODE_ENV=dev node index.js queso
-                    [variable]   [   proceso  ] [argumento]
+                    
                     - ¿Para qué cambiamos los entornos?
                         Cuando uso entornos de desarrollo, me permiten verlos en vivo, aunque no sea performante ni veloz. Este solamente estará bien para ver los cambios y que lo compile de una forma simple, no la más performante.                        
         - global
 
 
-- module.exports y exports
-
-
+        - module.exports y exports:
+            - Permite exportar funciones para usarlas en otra sección de mi código. [ver ejercicio sumator-export.js]. En un archivo, escribo:
+                module.exports = nombreDeFunción;
+            - Al usar exports, expongo la función como un módulo.
+            - Después de exportarla, tengo que avisarle a node que quiero usarla (ver sumator-import.js):
+                const suma = require('./modules/sumator-export');
+            - Otras formas o usos de dividir módulos es dividir las diversas vistas de un sitio web (por ejemplo, el carrito es una carpeta por sí misma). El código se vuelve modular.
