@@ -22,6 +22,7 @@ Se dividen en módulos y paquetes. La diferencia radica en el origen de los arch
                 - Cuando comparto mi proyecto, el usuario descarga el producto, y si el json está bien, debe ejecutar npm install. Le permite descargar los node_modules que figuran en dependencies.
                 * Cuidado: la carpeta node_modules jamás debe versionarse. Porque pesa mucho y puede causar problemas de versiones. Para evitarlo, la agrego a mi repo:
                 en .gitignore, escribir /node_modules
+                - conviene agregar un comentario tipo # modules y # files para saber qué queremos que no se suba al repo (organización)
             También aparece una carpeta que se llama node_modules
     - Para utilizar un paquete desde un archivo, escribo:
                 const moment = require('moment')
@@ -46,4 +47,7 @@ Se dividen en módulos y paquetes. La diferencia radica en el origen de los arch
     Clono un proyecto, idealmente tendría que ir a un readme que me diga lo que necesita hacer para bajarlo.
     Aunque no lo tenga, escribo "npm install" y me instala cada una de las dependencias (porque recorre el objeto dependencies del json).
     Recomendación: agregar /node_modules al gitignore incluso antes de descargarlos, porque después es muy difícil de quitarlo del github.
+    Si yo quiero que solo se bajen la versión específica, quito la cejilla: ^ en dependencies (en package.json)
+
+    
 

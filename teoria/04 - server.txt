@@ -1,0 +1,13 @@
+Todo proyecto de front-end requiere compilación para poder llegar al resultado final en el cliente.
+A mediida que empezamos a juntar archivos, corremos un montón de cosas en simultáneo, para poder verlas mientras desarrollamos, ,montamos (generamos) un entorno local del servidor. En él podemos ver todo compilado y corriendo (en js; en hp usan otros tipos de servidores; en java, también, etc.).
+
+Cuando trabajamos con frameworks, el proceso de visualización es más complejo, por eso se deben compilar las cosas.
+- Dejo de codear un index.html: todos los frameworks y las partes se toman y se compilan para generar un index.html. 
+
+- Hasta ahora, los sitios eran estáticos, el index era fijo y solo se hacían algunas pequeñas interacciones con js. Ahora, cuando pasa por todo el proceso de compilación es cuando obtenemos finalmente sitios  verdaderamente dinámicos; la información que recibe del servidor determina cómo tiene que verse, qué información renderizar, que acciones hacer. El js que nosotras hacemos termina dando todo el sitio y el html, que ni siquiera desarrollamos, sino que surge del build y la compilación que hagamos.
+
+- En ciertos proyectos se agrega un docker file, que te aclara lo que siempre debes hacer para que el proyecto corra siempre igual en todos los servidores.
+
+
+
+

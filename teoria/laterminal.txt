@@ -25,7 +25,13 @@ open [archivo.extensión] ==> Abre el archivo (en el programa determinado, html 
 
 node [archivo.extensión] ==> ejecuta el archivo (es decir, el proceso)
 
-rm -rf [archivo.extensión] ==> borra el archivo
+rm -rf [archivo.extensión] ==> borra el archivo (PARA SIEMPRE, ESTÁ SEGURA)
+
 mv [archivo.extensión] [nuevoNombreArchivo.extensión] ==> cambia el nombre de archivo (primero el viejo después el nuevo)
 
 git clone [url del repo] ==> cómo clonar un repo
+
+git init ==> inicializar el repo en git (en carpeta)
+
+killall node ==> cierra todos los procesos que pueden estar ejecutándose
+
