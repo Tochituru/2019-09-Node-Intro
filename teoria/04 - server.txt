@@ -6,8 +6,39 @@ Cuando trabajamos con frameworks, el proceso de visualización es más complejo,
 
 - Hasta ahora, los sitios eran estáticos, el index era fijo y solo se hacían algunas pequeñas interacciones con js. Ahora, cuando pasa por todo el proceso de compilación es cuando obtenemos finalmente sitios  verdaderamente dinámicos; la información que recibe del servidor determina cómo tiene que verse, qué información renderizar, que acciones hacer. El js que nosotras hacemos termina dando todo el sitio y el html, que ni siquiera desarrollamos, sino que surge del build y la compilación que hagamos.
 
-- En ciertos proyectos se agrega un docker file, que te aclara lo que siempre debes hacer para que el proyecto corra siempre igual en todos los servidores.
+- En ciertos proyectos se agrega un Docker (es una empresa) file, que te aclara lo que siempre debes hacer para que el proyecto corra siempre igual en todos los servidores.
 
+Cómo armar un server
+- ¿Dónde lo armo?
+    Localhost hacen referencia a servidores que se ejecutan en mi máquina, son locales. Cuando un servidor corre su código lo hace internamente en su localhost, pero lo enmascara con un dominio, que lo vemos como la dirección URL.
+    - Los servidores tienen puertos.
 
+        - Convenciones de puertos:
+            - front:3000
+            - back: 8080
+            - 4002 (la conexión entre ambos según Luke)
 
+    - Normalmente no codeamos un servidor porque somos front-end, pero está bueno saber qué es.
+
+    - Para hacer servidores, utilizaremos un módulo que se llama Express (mirar server.js).
+        -  Tengo que sumar la dependencia al proyecto mediante:
+            npm install express
+        - para instalar una versión específica:
+            npm install express@[versión, p.ej., express@4.17.1]
+        - Permite crear rutas HTML específicas
+        - Importamos express (Creamos una const que requiera la dependencia express)
+        - Creamos un servidor con el resultado de la ejecución express (con la const server/app (como la quiera llamar) que llame a la función de express).
+        - Entonces empezamos a invocar al servidor y llamar las cosas de adentro como si fueran propiedades o métodos. 
+        - Empezamos por get. Marcamos los parámetros (la barra dice que es la ruta raíz, y siempre va a tener una request y una response).
+        - listen es un método del servidor que recibe dos parámetros; el número de puerto que va a escuchar y el mensaje que me devuelve si funcionó o no (que aparece en la terminal);
+
+    - En package.json, hago un script para "node server.js" y tendría que activar el servidor. Si no, escribo esa línea en la terminal y lo levanta. 
+    - Para matar el proceso, ctrl c.
+    
+- Como vamos a trabajar con rest APIs, nos interesa que los servidores puedan responder con un json. Por ejemplo:
+    res.send( {'data': 'sarasa'});
+
+ - Vamos a levantar el endpoint y extraer el json mediante js. Podemos hacerlo mediante un fetch en el html (index.html).
+    - Posible error: CORS (Cross-origin resource sharing)
+        Los servidores no son públicos por defecto. Cuando hacemos un servidor para un sitio web, nos queremos asegurar de que solo lo consuman nuestros propios recursos. Básicamente, definimos desde dónde se puede acceder (para que no todas las personas se puedan meter). En entornos de desarrollos, le definimos los usuarios o una key (api-key). [Se verá más adelante]
 

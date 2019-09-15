@@ -1,0 +1,3 @@
+Middleware
+Es una capa intermedia entre el back-end y el front-end.
+Se usa por seguridad y rendimiento, por ejemplo, consulta la API con cierta cantidad de información, la recibe, la procesa y le sirve al equipo de front-end desde el momento que se renderiza la parte de la data que nos interesa.
