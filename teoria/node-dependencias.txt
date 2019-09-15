@@ -27,5 +27,23 @@ Se dividen en módulos y paquetes. La diferencia radica en el origen de los arch
                 const moment = require('moment')
         - No escribo una ruta porque no es necesario
 
-    -Desde la página de npm, podemos encontrar un montón de paquetes que hacen cosas por vos. Por ejemplo, el carrosel (te dice cómo instalarlo y cómo utilizarlo)
-        - No hace falta recordar todos los parámetros, pero los vas a ir aprendiendo 
+    - Desde la página de npm, podemos encontrar un montón de paquetes que hacen cosas por vos. Por ejemplo, el carrosel (te dice cómo instalarlo y cómo utilizarlo)
+        - No hace falta recordar todos los parámetros, pero los vas a ir aprendiendo
+    - En package.json, Scripts nos permite crear nuestrar propias líneas de código y facilitar tareas. Por ejemplo:
+        "dev": "NODE_ENV=dev node index.js",
+        "start": "NODE_ENV=production node index.js",
+        "build-css": "npm sass /styles/styles.scss /styles/style.css --watch",
+        
+        (encapsulamosla serie de scripts dentro de package.json)
+        Entonces, voy a la terminal y escribo:
+        
+        npm run [dev]
+        
+        (Es npm porque no ejecuto node, sino el paquete)
+        Cuando quiero agregar argumentos al script ya definido, se los agrego desde el índice 2 con -- (para confirmar)
+
+¿Cómo se ejecuta node_modules en otra compu si yo no lo subo al github?
+    Clono un proyecto, idealmente tendría que ir a un readme que me diga lo que necesita hacer para bajarlo.
+    Aunque no lo tenga, escribo "npm install" y me instala cada una de las dependencias (porque recorre el objeto dependencies del json).
+    Recomendación: agregar /node_modules al gitignore incluso antes de descargarlos, porque después es muy difícil de quitarlo del github.
+

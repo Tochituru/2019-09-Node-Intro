@@ -1,0 +1,2 @@
+Las bases de datos son espacios físicos donde almacenamos los datos de forma cruda, organizados en una estructura que el desarrollador elige.
+Para poder llegar a nosotras, es necesario un proceso, el que nos sirve dicha información.

@@ -71,6 +71,6 @@ No obstante, en Node existen tres variables globales únicas a backend:
             - Permite exportar funciones para usarlas en otra sección de mi código. [ver ejercicio sumator-export.js]. En un archivo, escribo:
                 module.exports = nombreDeFunción;
             - Al usar exports, expongo la función como un módulo.
-            - Después de exportarla, tengo que avisarle a node que quiero usarla (ver sumator-import.js):
+            - Después de exportarla, tengo que avisarle a node que quiero usarla (ver ejercicio-import.js):
                 const suma = require('./modules/sumator-export');
             - Otras formas o usos de dividir módulos es dividir las diversas vistas de un sitio web (por ejemplo, el carrito es una carpeta por sí misma). El código se vuelve modular.
