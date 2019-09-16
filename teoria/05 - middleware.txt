@@ -1,7 +1,30 @@
 Middleware
+[Cualquier cosa que está clavada entre dos cosas]
+
 Es una capa intermedia entre el back-end y el front-end.
 Se usa por seguridad y rendimiento, por ejemplo, consulta la API con cierta cantidad de información, la recibe, la procesa y le sirve al equipo de front-end desde el momento que se renderiza la parte de la data que nos interesa.
 
 - Es muy inseguro que la web tenga el API key puesta en el JS directo, porque alguien la puede robar.
 - Esos valores de seguridad suelen guardarse en un middleware, que se obtienen mediante un .get
+
+- Por ejemplo, hay un servicio externo, el de películas, que cuando lo consultas en su raíz tiene un montón de información servida como json. Mi front no quiere trabajar con toda esa data, sino con secciones específicas. Para eso, quiero colocar un proceso en medio de ese request. 
+    - Una forma de hacerlo es tener una api propia que, cuando yo consulto a mi propio back-end en node, él consume esta api externa de consulta de películas, hace algún proceso y me lo devuelve a front-end. Ese proceso es el middleware:
+
+                    < --------M------- 
+                A         (Middleware)    B
+                      --------M-------> 
+
+- Por ejemplo, queremos que ese middleware reciba un req y responda con un mensaje, o que reciba un get y lo devuelva en otro lugar (router.js). Hago una función llamada middleware, y le pido que cuando llame un get, reciba ese middleware.
+
+                const middleWare = (req, res) => {
+                    console.log('Pidiendo usuarios');
+                    res.json({users});
+                }
+                router.get('/api/users', middleWare);
+
+- Los métodos tipo .get tienen varios parámetros. Hasta ahora trabajamos solo con req y res, pero también tiene error y next.
+Los casos de error los veremos más adelante.
+Next es una función que se ejecuta tras terminar el código del router y le de paso a la siguiente acción definida. Como yo usé la res de users en nuestro middleware, conviene definir la función next para decir qué tiene que hacer después.
+- Lo podemos poner el middleware en users.js y exportar directamente el middleware, en vez de users.js
+
 

@@ -105,8 +105,6 @@ Métodos del servidor
                 * Otro enfoque es poner 'public' dentro de pages, en ese caso deberíamos agregarle la ruta ./pages/public, 
             - En el html no hace falta mencionarlo con la ruta real, sino que es suficiente con mencionarlo.
 
-
-
         - Así logramos emprolijar el código y evitar que se generen accesos a archivos locales.
         [El ejercicio está desde github expressRouter]    
     

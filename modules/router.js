@@ -7,6 +7,8 @@ const data = {
     data: 'test from router module'
 };
 
+
+
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../pages/home.html'))
     //se devuelve/sirve una página web
@@ -24,10 +26,9 @@ router.get('api/products', (req, res) => {
 });
 
 
-router.get('/api/users', (req, res) => {
-    res.json(users)
-    //mando un json
-});
+router.get('/api/users', users);
+/*(req, res) => res.json(users)*/
+
 
 
 module.exports = router
