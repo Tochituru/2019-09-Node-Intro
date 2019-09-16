@@ -14,13 +14,13 @@ let users = [
 
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../pages/home.html'))
-    //se vuelve una página web
+    //se devuelve/sirve una página web
 });
 
 
 router.get('/products', (req, res) => {
     res.sendFile(path.join(__dirname, '../pages/upslabardie.html'))
-    //se vuelve el vínculo
+    //se devuelve/sirve el vínculo
 });
 
 router.get('api/products', (req, res) => {
