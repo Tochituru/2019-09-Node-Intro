@@ -1,0 +1,8 @@
+Morgan es un módulo de middleware que nos permite, por ejemplo, debuggear lo que sucede con nuestro servidor.
+Le solemos poner el nombre de logger a la const (ver server.js)
+
+- Le pedimos al servidor que lo use.
+- Morgan está permanentemente observando la aplicación, metiéndose en todos y cada uno de los procesos y mostrándome mensajes correspondientes a lo que pasa en esos procesos. 
+- En la terminal me dice cuál es el estado del error y los milisegundos que demora.
+
+- Este es un claro ejemplo de un middleware.

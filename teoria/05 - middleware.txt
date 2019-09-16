@@ -25,6 +25,8 @@ Se usa por seguridad y rendimiento, por ejemplo, consulta la API con cierta cant
 - Los métodos tipo .get tienen varios parámetros. Hasta ahora trabajamos solo con req y res, pero también tiene error y next.
 Los casos de error los veremos más adelante.
 Next es una función que se ejecuta tras terminar el código del router y le de paso a la siguiente acción definida. Como yo usé la res de users en nuestro middleware, conviene definir la función next para decir qué tiene que hacer después.
-- Lo podemos poner el middleware en users.js y exportar directamente el middleware, en vez de users.js
+- Lo podemos poner el middleware en users.js y exportar directamente el middleware, en vez de users.js 
+Lo ideal es seguir partiendo el código para que sea más fácil debuggear y asignar responsabilidades a las funciones.
+- Entonces, lo que le llega a route es la api de users, pero la resolución está en otra parte (en el middleware).
 
 
