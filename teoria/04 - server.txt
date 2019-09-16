@@ -104,6 +104,10 @@ Métodos del servidor
                 * No necesita ./ porque es la carpeta entera, a la altura raíz (este método en particular).
                 * Otro enfoque es poner 'public' dentro de pages, en ese caso deberíamos agregarle la ruta ./pages/public, 
             - En el html no hace falta mencionarlo con la ruta real, sino que es suficiente con mencionarlo.
+            
+            - Es posible en server.use incluir un parámetro anterior, que sirve de alias. Ya no es como si estuvieran en la raíz, sino en la carpeta del alias:
+                        server.use('/statics', express.static('public'))
+                - En este caso, es necesario incluir el nombre de la carpeta del alias ("statics") en el HTML.
 
         - Así logramos emprolijar el código y evitar que se generen accesos a archivos locales.
         [El ejercicio está desde github expressRouter]    
