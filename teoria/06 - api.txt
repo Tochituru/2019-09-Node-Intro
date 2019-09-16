@@ -3,3 +3,4 @@ API
 
 API REST
 - Ciertas convenciones que sigue la api para conseguir esa información
+

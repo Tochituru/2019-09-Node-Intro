@@ -1,0 +1,8 @@
+Postman es una aplicación que me deja manejar los request y responses directamente.
+Si nos hacemos una cuenta, sirve para guardar el historial, las api keys, etc.
+
+Nos permite especificar la url a la que queremos hacer un request; podemos escribir la url de nuestro sitio y construir el endpoint específico al que quiero ir.
+Nos permite elegir el método que querramos también y nos muestra la respuesta que estamos recibiendo.
+
+Básicamente sirve como prueba ante APIs.
+

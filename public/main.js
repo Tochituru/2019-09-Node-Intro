@@ -3,10 +3,12 @@ let list = document.getElementById('list');
 listItem.innerHTML = 'sarasa';
 list.appendChild(listItem);
 
+const printProducts = (data) => {
+    
+}
 
-fetch('http://localhost:3000/api/products')
-    .then(res => res.json())
-    .then(res => {
-        console.log(res);
-    });
-
+const initialize = () => { 
+    fetch('/api/products')
+        .then(res => res.json())
+        .then(res => printProducts (res));
+        };

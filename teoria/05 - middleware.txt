@@ -24,7 +24,12 @@ Se usa por seguridad y rendimiento, por ejemplo, consulta la API con cierta cant
 
 - Los métodos tipo .get tienen varios parámetros. Hasta ahora trabajamos solo con req y res, pero también tiene error y next.
 Los casos de error los veremos más adelante.
-Next es una función que se ejecuta tras terminar el código del router y le de paso a la siguiente acción definida. Como yo usé la res de users en nuestro middleware, conviene definir la función next para decir qué tiene que hacer después.
+Next es una función que se ejecuta tras terminar el código del router y le de paso a la siguiente acción definida. Como yo usé la res de users en nuestro middleware, conviene definir la función next "y luego continúa con el flujo de los servidores". 
+    - Se usa mucho más cuando hay funciones de callback.
+    - Callback significa usar funciones como parámetros de otras funciones (con fines de asincronía). NUNCA LO USEMOS.
+     Si querés usar algo asíncrono:
+        fdos ('text').then((parametro)=>funo());
+
 - Lo podemos poner el middleware en users.js y exportar directamente el middleware, en vez de users.js 
 Lo ideal es seguir partiendo el código para que sea más fácil debuggear y asignar responsabilidades a las funciones.
 - Entonces, lo que le llega a route es la api de users, pero la resolución está en otra parte (en el middleware).

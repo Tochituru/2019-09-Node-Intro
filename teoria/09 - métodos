@@ -1,0 +1,5 @@
+GET 
+
+El Fetch tiene por defecto el método .GET
+Si no especifico otro método, extrae información de la api mediante un método GET
+
