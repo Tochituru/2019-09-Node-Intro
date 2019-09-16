@@ -22,7 +22,8 @@ server.get('/', (req, res) => {
 
 */
 
-server.use(express.static('public'));
-server.use(router);
+server.use('/statics', express.static('public'));
 server.use(logger('dev'));
+server.use(router);
+
 server.listen(port, () => console.log(`Example app listening on port ${port}`));
