@@ -22,5 +22,6 @@ server.get('/', (req, res) => {
 */
 
 server.use(router);
+server.use(express.static('public'));
 
 server.listen(port, () => console.log(`Example app listening on port ${port}`));

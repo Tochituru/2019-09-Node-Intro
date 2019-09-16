@@ -97,6 +97,16 @@ Métodos del servidor
                     - __dirname es una palabra reservada de node que tiene info sobre la ubicación del proyecto
                     - el segundo parámetro es la ruta específica ../ dice que es un nivel hacia arriba (porque estamos en modules), y el resto marca dónde está el archivo
         - Cuando queremos sumar archivos dentro del servidor, necesitamos establecer la ruta desde el archivo router también. El link en el HTML es el endpoint que determino en el archivo router.js
+        - Static folder: cuando se trata de varios archivos, creamos una carpeta de estáticos. Así, el servidor sabe que hay ciertos archivos, generalmente binarios, como de imágenes, que están ahí y que van a ser accedidos de diversas rutas en distintos momentos, pero que no son dinámicos. Es decir, no son HTML, sino archivos que no van a cambiar y que son públicos, a los que puedan acceder desde cualquier lugares. La carpeta suele llamarse "public" o "static".
+            - Cuando el estilo está generado por un sass, en public quedará el .css, no el scss.
+            - En server.js, debo marcar cuál será la carpeta de esos elementos:
+                    server.use(express.static('public'));
+                * No necesita ./ porque es la carpeta entera, a la altura raíz (este método en particular).
+                * Otro enfoque es poner 'public' dentro de pages, en ese caso deberíamos agregarle la ruta ./pages/public, 
+            - En el html no hace falta mencionarlo con la ruta real, sino que es suficiente con mencionarlo.
+
+
+
         - Así logramos emprolijar el código y evitar que se generen accesos a archivos locales.
         [El ejercicio está desde github expressRouter]    
     
@@ -104,5 +114,4 @@ Métodos del servidor
         - Para evitar que la api quede expuesta, generará problemas de CORS, pero una persona que no esté dentro del dominiio no podrá acceder (entre otros niveles de seguridad, con tokens, claves, etc).
         - La práctica habitual es que nuestra parte de backend esté en un subdominio, p.ej: www.miweb.com, api.miweb.com (así son dos proyectos separados).
     
-
 

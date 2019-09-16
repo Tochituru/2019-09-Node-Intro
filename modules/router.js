@@ -1,6 +1,6 @@
 const express = require('express');
 const path =require('path');
-const users = require('./modules/users')
+const users = require('./users')
 const router = express.Router();
 
 const data = {
