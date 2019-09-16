@@ -1,13 +1,12 @@
 const express = require('express');
-const path =require('path');
+const path = require('path');
+const products = require('./products');
 const users = require('./users')
 const router = express.Router();
 
 const data = {
     data: 'test from router module'
 };
-
-
 
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../pages/home.html'))
@@ -20,10 +19,7 @@ router.get('/products', (req, res) => {
     //se devuelve/sirve el vínculo
 });
 
-router.get('api/products', (req, res) => {
-    res.sendFile(path.join(__dirname, '../pages/upslabardie.html'))
-    //mando un mensaje
-});
+router.get('/api/products', products)
 
 
 router.get('/api/users', users);
