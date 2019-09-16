@@ -4,9 +4,8 @@
   "description": "trying out npm install",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "start-ejercicio": "node ejercicio-modules.js",
-    "start-server": "node server.js"
+    "start": "node server.js",
+    "start-ejercicio": "node ejercicio-modules.js"
   },
   "repository": {
     "type": "git",

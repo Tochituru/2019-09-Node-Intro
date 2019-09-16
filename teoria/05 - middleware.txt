@@ -4,3 +4,4 @@ Se usa por seguridad y rendimiento, por ejemplo, consulta la API con cierta cant
 
 - Es muy inseguro que la web tenga el API key puesta en el JS directo, porque alguien la puede robar.
 - Esos valores de seguridad suelen guardarse en un middleware, que se obtienen mediante un .get
+

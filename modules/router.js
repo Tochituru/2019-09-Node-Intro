@@ -1,16 +1,11 @@
 const express = require('express');
 const path =require('path');
+const users = require('./modules/users')
 const router = express.Router();
 
 const data = {
     data: 'test from router module'
 };
-
-let users = [
-    { user: 'admin', pass: 'password1' },
-    { user: 'editor', pass: 'password2' },
-    { user: 'reader', pass: 'password3' },
-];
 
 router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../pages/home.html'))
@@ -29,7 +24,7 @@ router.get('api/products', (req, res) => {
 });
 
 
-router.get('/users', (req, res) => {
+router.get('/api/users', (req, res) => {
     res.json(users)
     //mando un json
 });
