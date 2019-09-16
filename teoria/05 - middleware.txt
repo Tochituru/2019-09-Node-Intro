@@ -1,3 +1,6 @@
 Middleware
 Es una capa intermedia entre el back-end y el front-end.
 Se usa por seguridad y rendimiento, por ejemplo, consulta la API con cierta cantidad de información, la recibe, la procesa y le sirve al equipo de front-end desde el momento que se renderiza la parte de la data que nos interesa.
+
+- Es muy inseguro que la web tenga el API key puesta en el JS directo, porque alguien la puede robar.
+- Esos valores de seguridad suelen guardarse en un middleware, que se obtienen mediante un .get

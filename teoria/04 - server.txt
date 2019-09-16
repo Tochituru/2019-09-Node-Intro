@@ -9,36 +9,100 @@ Cuando trabajamos con frameworks, el proceso de visualización es más complejo,
 - En ciertos proyectos se agrega un Docker (es una empresa) file, que te aclara lo que siempre debes hacer para que el proyecto corra siempre igual en todos los servidores.
 
 Cómo armar un server
-- ¿Dónde lo armo?
-    Localhost hacen referencia a servidores que se ejecutan en mi máquina, son locales. Cuando un servidor corre su código lo hace internamente en su localhost, pero lo enmascara con un dominio, que lo vemos como la dirección URL.
-    - Los servidores tienen puertos.
-
-        - Convenciones de puertos:
+    - ¿Dónde lo armo?
+        Localhost hacen referencia a servidores que se ejecutan en mi máquina, son locales. Cuando un servidor corre su código lo hace internamente en su localhost, pero lo enmascara con un dominio, que lo vemos como la dirección URL.
+        - Los servidores tienen puertos.
+            Convenciones de puertos:
             - front:3000
             - back: 8080
             - 4002 (la conexión entre ambos según Luke)
 
-    - Normalmente no codeamos un servidor porque somos front-end, pero está bueno saber qué es.
+        - Normalmente no codeamos un servidor porque somos front-end, pero está bueno saber qué es.
 
     - Para hacer servidores, utilizaremos un módulo que se llama Express (mirar server.js).
         -  Tengo que sumar la dependencia al proyecto mediante:
-            npm install express
+                npm install express
         - para instalar una versión específica:
-            npm install express@[versión, p.ej., express@4.17.1]
+                npm install express@[versión, p.ej., express@4.17.1]
         - Permite crear rutas HTML específicas
         - Importamos express (Creamos una const que requiera la dependencia express)
         - Creamos un servidor con el resultado de la ejecución express (con la const server/app (como la quiera llamar) que llame a la función de express).
-        - Entonces empezamos a invocar al servidor y llamar las cosas de adentro como si fueran propiedades o métodos. 
+    - Entonces empezamos a invocar al servidor y llamar las cosas de adentro como si fueran propiedades o métodos. 
         - Empezamos por get. Marcamos los parámetros (la barra dice que es la ruta raíz, y siempre va a tener una request y una response).
+            - Podemos fijar tipos específicos de request, que no veremos ahora.
+            - La response son los datos que manda cualquier servidor (o API)
         - listen es un método del servidor que recibe dos parámetros; el número de puerto que va a escuchar y el mensaje que me devuelve si funcionó o no (que aparece en la terminal);
 
     - En package.json, hago un script para "node server.js" y tendría que activar el servidor. Si no, escribo esa línea en la terminal y lo levanta. 
     - Para matar el proceso, ctrl c.
     
-- Como vamos a trabajar con rest APIs, nos interesa que los servidores puedan responder con un json. Por ejemplo:
+    - Como vamos a trabajar con rest APIs, nos interesa que los servidores puedan responder con un json. Por ejemplo:
     res.send( {'data': 'sarasa'});
 
- - Vamos a levantar el endpoint y extraer el json mediante js. Podemos hacerlo mediante un fetch en el html (index.html).
+    - Vamos a levantar el endpoint y extraer el json mediante js. Podemos hacerlo mediante un fetch en el html (index.html).
     - Posible error: CORS (Cross-origin resource sharing)
-        Los servidores no son públicos por defecto. Cuando hacemos un servidor para un sitio web, nos queremos asegurar de que solo lo consuman nuestros propios recursos. Básicamente, definimos desde dónde se puede acceder (para que no todas las personas se puedan meter). En entornos de desarrollos, le definimos los usuarios o una key (api-key). [Se verá más adelante]
+        - Los servidores no son públicos por defecto. Cuando hacemos un servidor para un sitio web, nos queremos asegurar de que solo lo consuman nuestros propios recursos. Básicamente, definimos desde dónde se puede acceder (para que no todas las personas se puedan meter). En entornos de desarrollos, le definimos los usuarios o una key (api-key). [Se verá más adelante]
+
+(A)sincronismo:
+    -Sincronismo significa que las líneas se leen y ejecutan una detrás de la otra, en el orden que lo escribamos.
+
+    - JS es un lenguaje sincrónico por defecto, a menos que definamos que corte esa línea de ejecución:
+        - setTimeout
+            una función predefinida de JS que recibe dos parámetros. El primero es una función y el segundo una cantidad de tiempo en milisegundos. La función que yo defina en el primer parámetro se ejecuta dos segundos después de que pasó por esta línea [ver asynctest.js]
+                setTimeout(() => {console.log('bancame un rato')}, 2000)
+        - Promise: cuando queremos que se resuelva algo primero para continuar, se usan las promesas
+            - Una instrucción en JS que nos permite ejecutar varias funciones o comandos una vez que se haya resuelto un argumento o función.
+                --> New es la forma de convocar a un nuevo objeto de algo
+            - Recibe una función como parámetro y esa función tiene dos argumentos posibles: resolve y reject, que no se pueden llamar de otra forma.
+                let somePromise = new Promise((resolve, reject) => {
+                setTimeout(()=> resolve('estoy lista'), 2000)
+            })
+            - Primero no entrega el resolve, sino que se avisa que la promesa existe. Por eso se usa el método .then, que primero espera que se resuelva la promesa y después nos dan el valor.
+                somePromise.then((res)=> {
+                    console.log(res);
+                    console.log('vamos que se puede')
+                })
+                [- Ver fun fun function en youtube]
+
+        - Async y await son palabras reservadas desde ECMA 7
+            - Son dos palabras reservadas en las que una necesita de la otra para poder funcionar y nos deja especificar cuándo queremos esperar la resolución de un valor para continuar con la ejecución de un valor.
+            - Hago una función arrow normal. 
+            Async se escribe antes de los parámetros en la arrow function.
+            Await se escribe antes del valor que espero recibir cuando se resuelva.
+            - De forma nativa, no manejan casos de error como la promesa.
+            - Puedo usasr los métodos de try y catch, que permiten resolver problemas de error. Hay un tercer paso, "finally".
+            - En el momento en que a una función le pongo async por delante, JS la trata como una promesa.
+            - Incluso puedo agregarle un .then (pero no es lo ideal).
+
+            - Se puede usar fetch con async y await, que hace lo mismo que una api.
+
+Métodos del servidor
+    - GET 
+        - Su primer parámetro es el endpoint (solo la barra significa que es la raíz,) y el segundo es la acción (una función). 
+            - Los parámetros de la función son req y res.
+            - El request significa qué espera recibir el servidor. El request es adonde llega el pedido del fetch.
+            - El response es el resultado que entrega el servidor tras realizar un fetch. Es lo que "responde" el servidor a un pedido de fetch.
+
+- ROUTER 
+    - A medida que creo diversas URL (o endpoints), puedo hacer diversas respuestas y esto crecerá. Por eso, se genera un archivo ROUTER (ver router.js)
+    - Este archivo permite definir cuáles son las rutas. Express tiene un método especifico para generarlo. Los endpoints serán métodos sobre el router, no el servidor.
+    - Una vez listo, exporto el módulo a server.js, lo importo con require y lo uso:
+        server.use(router);
+    - Para enviar (servir) una página a través del servidor, necesito usar el método sendFile de respuesta 
+        - Tengo que requerir "path" (desde express), un módulo que contiene la información sobre dónde está ubicado mi proceso de node que se ejecuta en el momento. Sirve para traducir el choclo de la ruta local de un servidor a una URL (o endpoint) decente de un servidor.
+        - Desde router, establezco el método get, cuya respuesta se va a basar en dos cosas: el lugar donde corre mi proceso y el archivo que quiero ejecutar específicamente.
+                res.sendFile(path.join(__dirname, '../pages/home.html'))
+            - Cómo específicamos que es ese archivo y cómo queremos que se muestre en el navegador:
+                - El método join nos permite unir cosas, con dos parámetros:
+                    - __dirname es una palabra reservada de node que tiene info sobre la ubicación del proyecto
+                    - el segundo parámetro es la ruta específica ../ dice que es un nivel hacia arriba (porque estamos en modules), y el resto marca dónde está el archivo
+        - Cuando queremos sumar archivos dentro del servidor, necesitamos establecer la ruta desde el archivo router también. El link en el HTML es el endpoint que determino en el archivo router.js
+        - Así logramos emprolijar el código y evitar que se generen accesos a archivos locales.
+        [El ejercicio está desde github expressRouter]    
+    
+    - Para no hardcodear en el front-end la respuesta de backend que quiero mandar cuando hago un get, tendría una API y cuando el js que está en la home.html hace un fetch a la api definida en el server, podré recibir (y mandar) la información sin jodernos con backend. De esa manera, no está expuesta a los usuarios.
+        - Para evitar que la api quede expuesta, generará problemas de CORS, pero una persona que no esté dentro del dominiio no podrá acceder (entre otros niveles de seguridad, con tokens, claves, etc).
+        - La práctica habitual es que nuestra parte de backend esté en un subdominio, p.ej: www.miweb.com, api.miweb.com (así son dos proyectos separados).
+    
+
 

@@ -21,7 +21,8 @@ explore . ==> Abre la carpeta en el explorador de archivos (solo windows)
 
 touch [archivo.extensión] ==> Crea archivos
 code [archivo.extensión] ==> Abre el archivo en visual code
-open [archivo.extensión] ==> Abre el archivo (en el programa determinado, html en el navegador)
+open [archivo.extensión] ==> Abre el archivo (en el programa determinado, html en el navegador, en Mac)
+start [archivo.extensión] ==> Abre el archivo (en el programa determinado, html en el navegador, en Windows)
 
 node [archivo.extensión] ==> ejecuta el archivo (es decir, el proceso)
 
