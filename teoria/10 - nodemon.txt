@@ -1,0 +1,7 @@
+nodemon es un programa que cierra y levanta automáticamente el servidor cada vez que hacemos un cambio.
+
+Es global, así que no aparece en node_modules.
+
+Se instala con npm install -g nodemon.
+
+En el script, se cambia el script de start a nodemon server.js

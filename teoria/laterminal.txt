@@ -36,3 +36,5 @@ git init ==> inicializar el repo en git (en carpeta)
 
 killall node ==> cierra todos los procesos que pueden estar ejecutándose
 
+-g ==> significa global, es como sass y nodemon
+sudo ===> con usuario y contraseña 
