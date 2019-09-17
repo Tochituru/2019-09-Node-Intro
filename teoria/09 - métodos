@@ -3,3 +3,6 @@ GET
 El Fetch tiene por defecto el método .GET
 Si no especifico otro método, extrae información de la api mediante un método GET
 
+Payload significa el conjunto de información que enviamos en una request. Es un nombre conceptural, no un nombre reservado. Es una convención semántica para saber qué queremos mandar.
+
+Para validar la información, tenemos que saber la información básica de los datos (que un e-mail tiene que tener el arroba, la cantidad de números en DNI, etc.)

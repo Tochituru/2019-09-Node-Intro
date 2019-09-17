@@ -14,6 +14,10 @@ router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../pages/home.html'))
     //se devuelve/sirve una página web
 });
+router.get('/form', (req, res) => {
+    res.sendFile(path.join(__dirname, '../pages/form.html'))
+    //se devuelve/sirve el vínculo
+});
 router.get('/products', (req, res) => {
     res.sendFile(path.join(__dirname, '../pages/upslabardie.html'))
     //se devuelve/sirve el vínculo
