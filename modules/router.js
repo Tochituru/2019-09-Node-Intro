@@ -4,9 +4,13 @@ const products = require('../api/products');
 const users = require('../api/users')
 const router = express.Router();
 
-const data = {
-    data: 'test from router module'
-};
+
+const usersEjemplo = [
+    { id: 1, name: 'calis1', email: 'calis1@gmail.com' },
+    { id: 2, name: 'calis2', email: 'calis2@gmail.com' },
+    { id: 3, name: 'calis3', email: 'calis3@gmail.com' },
+    { id: 4, name: 'calis4', email: 'calis4@gmail.com' }
+];
 
 //Pages routes//
 
@@ -27,13 +31,25 @@ router.get('/products', (req, res) => {
 //Api routes//
 router.get('/api/products', products)
 router.get('/api/users', users);
+
 router.get('/api/users/:id', (req, res) => {
-    let resUser = users.find((e) => e.id === req.params.id);
-    if (resUser) res.send(resUser);
+    let resUser = usersEjemplo.find((e) => e.id === req.params.id);
+    if (resUser) res.json(resUser);
     else res.status(404).send('El usuario no existe');
 });
 
-/*(req, res) => res.json(users)*/
+//Api routes post//
+
+router.post('/api/users', (req, res)=> {
+    let data = req.body;
+    if (data.hasOwnProperty('name') && data.hasOwnProperty('email')){
+    data.id = usersEjemplo.length+1;
+    usersEjemplo.push(data);
+    console.log(data);
+    res.send(`recibido con la id ${data.id}`); 
+    console.log(usersEjemplo);} else res.status('400').send('pusiste mal los datos');
+    
+});
 
 //Not found Handler//
 router.use((req, res) => res.status(404).send('Le pifiaste al servidor'))

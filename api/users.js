@@ -9,5 +9,7 @@ const middleWare = (req, res, next) => {
     console.log('Pidiendo usuarios');
     res.json({users});
     next();
-}
+};
+
+
 module.exports = middleWare

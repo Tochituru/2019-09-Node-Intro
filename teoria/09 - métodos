@@ -40,3 +40,28 @@ Con esto, podemos manejar mucho más fácilmente los parámetros de los métodos
 - Para exponer la información como .json, necesito agregar información (primer la id). Ahora cors y body-parser ya están activados y en el server.js.
 Desde router.js, puedo acceder al objeto directamente.
 Pruebo desde postman para ver si funciona.
+
+
+POST (mandar información) 
+Sirve para enviar datos al servidor.
+Puede usarse la misma ruta que para el get de la API. 
+
+        Cliente
+        - En el body del fetch, se escribe la petición (el request).
+
+        Servidor
+        - Se recibe el body del request.
+        - La respuesta que esperamos recibir de un servidor es "ok, la recibí".
+    - Para atomizar realmente las funciones, conviene que la función que postea datos solo haga eso y nada más; y otra función que recibe datos sea llamada para hacer solo eso.
+    [responsabilidad de funciones].
+    - Cuando enviamos datos, no queremos que el front mande el id, sino que sea automáticamente la del servidor. Algo común es que se envíe el post, se asigne la id en el back y se responda solo con la id para saber que se creó eso.
+    - Para crear una id única, se usan dependencias. Mientras tanto, se pueden crear una forma básica (lenght+1). Te generan hashes con id únicos que jamás se repiten.
+    - Otra opción es hacer "datenow", que tiene un timestamp y se convierte en un string. Esto siempre será único.
+    - P. ej.: uniqid().
+    
+
+PATCH 
+cambia esta información parcialmente
+
+PUT
+cambia toda esta información de principio a fin
