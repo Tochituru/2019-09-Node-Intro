@@ -27,7 +27,16 @@ router.get('/products', (req, res) => {
 //Api routes//
 router.get('/api/products', products)
 router.get('/api/users', users);
+router.get('/api/users/:id', (req, res) => {
+    let resUser = users.find((e) => e.id === req.params.id);
+    if (resUser) res.send(resUser);
+    else res.status(404).send('El usuario no existe');
+});
+
 /*(req, res) => res.json(users)*/
+
+//Not found Handler//
+router.use((req, res) => res.status(404).send('Le pifiaste al servidor'))
 
 
 

@@ -1,8 +1,42 @@
+En router.js, se escriben las rutas con un método específico.
+Nosotras responderemos según corresponda, pero siempre hay que definir la respuesta.
+
+(en Dom)
+Payload significa el conjunto de información que enviamos en una request. Es un nombre conceptural, no un nombre reservado. Es una convención semántica para saber qué queremos mandar.
+
+- Para validar la información, tenemos que saber la información básica de los datos (que un e-mail tiene que tener el arroba, la cantidad de números en DNI, etc.)
+
+- Puede volverse un choclo, así que también se pueden hacer case switchs.
+
+
 GET 
 
 El Fetch tiene por defecto el método .GET
 Si no especifico otro método, extrae información de la api mediante un método GET
+Lleva dos parámetros: el endpoint específico y la función que resuelve al ser accedido. Esa función tiene dos parámetros: el request (la petición desde el cliente hacia nuestro servidor) y el response (la respuesta que del servidor enviamos al cliente).
 
-Payload significa el conjunto de información que enviamos en una request. Es un nombre conceptural, no un nombre reservado. Es una convención semántica para saber qué queremos mandar.
+La res tiene métodos como .send y .sendFile y .json
 
-Para validar la información, tenemos que saber la información básica de los datos (que un e-mail tiene que tener el arroba, la cantidad de números en DNI, etc.)
+Los middleware son procesos que nos permiten resolver algunas tareas o aislar algunos comportamientos para hacer más prolijo lo que estamos haciendo (o añadir funcionalidad). Algunos ejemplos: saber dónde suceden cosas, ver el logger, las responses para no hacer choclos. Se vuelve el segundo parámetro de los métodos.
+
+Los errores se suman al archivo router mediante el método .use, y siempre se tiene que mandar el número de estado. Los estados de error van del 200 al 500. Hay como 4 o 5 por cada set.
+200 = está todo bien (señales de redirección)
+300 = nadie sabe
+400 = errores del usuario (mala información, pidió algo que no existía o para lo que no tiene permisos)
+500 = errores del servidor 
+Conviene hacer un solo archivo de error que conozca TODOS los errores.
+
+CORS > Cross Origin Service (paquete)
+De dónde puede ser accedida la API.
+Esta librería lo maneja por nosotras.
+ - Lo usamos normalmente con require y use
+
+Body-Parser > (paquete)
+Cuando hacíamos fetch con post y get, la información que enviamos viaja en formato json, básicamente es texto. 
+Como estamos del lado del cliente, estamos parseando antes de mandar, parseando cuando responde, hacemos .json, .stringify, .parse, etc. Tendríamos que hacer lo mismo del servidor, pero body-parser nos entrega la inforamción directamente servida como objeto de js para ahorrarnos esos pasos.
+Con esto, podemos manejar mucho más fácilmente los parámetros de los métodos.
+- body parser necesita más información (ver server.js)
+
+- Para exponer la información como .json, necesito agregar información (primer la id). Ahora cors y body-parser ya están activados y en el server.js.
+Desde router.js, puedo acceder al objeto directamente.
+Pruebo desde postman para ver si funciona.

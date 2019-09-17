@@ -1,28 +1,33 @@
 const express = require('express');
+const bodyParser = require('body-parser')
+const cors = require('cors');
 const logger = require('morgan');
 const router = require('./modules/router')
 const server = express();
 const port = 3000;
 
+server.use(bodyParser.urlencoded({
+    extended: true
+})
+);
+server.use(bodyParser.json());
 /*
 const data = {
     data: 'test'
 };
-
 let users = [
     { user: 'admin', pass: 'password1' },
     { user: 'editor', pass: 'password2' },
     { user: 'reader', pass: 'password3' },
 ];
-
 server.get('/', (req, res) => {
     //res.send(ejemplo uno{'data': 'sarasa'}
     res.send(data)
 });
-
 */
 
 server.use('/statics', express.static('public'));
+//server.use(cors); --->
 server.use(logger('dev'));
 server.use(router);
 
