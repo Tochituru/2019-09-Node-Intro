@@ -10,7 +10,6 @@ server.use(bodyParser.urlencoded({
     extended: true
 })
 );
-server.use(bodyParser.json());
 /*
 const data = {
     data: 'test'
@@ -26,9 +25,11 @@ server.get('/', (req, res) => {
 });
 */
 
-server.use('/statics', express.static('public'));
-//server.use(cors); --->
+server.use(bodyParser.json());
 server.use(logger('dev'));
+server.use('/statics', express.static('public'));
 server.use(router);
+//server.use(cors);
+//Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
 
 server.listen(port, () => console.log(`Example app listening on port ${port}`));

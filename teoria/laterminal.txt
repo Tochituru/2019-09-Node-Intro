@@ -38,3 +38,5 @@ killall node ==> cierra todos los procesos que pueden estar ejecutándose
 
 -g ==> significa global, es como sass y nodemon
 sudo ===> con usuario y contraseña 
+
+npx ==> parte de npm (completo)
