@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const products = require('../api/products');
-const users = require('../api/users')
+const users = require('../api/users');
 const router = express.Router();
 
 //Pages routes//
@@ -22,7 +22,7 @@ router.get('/products', (req, res) => {
 //Api routes//
 router.get('/api/products', products)
 router.get('/api/users', users.getUser);
-router.get('/api/users/:id', users.getUserbyId);
+router.get('/api/users/:id', users.getUserById);
 
 //Api routes post//
 

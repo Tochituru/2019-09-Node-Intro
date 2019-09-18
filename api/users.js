@@ -6,15 +6,11 @@ const users = [
 
 const getUser = (req, res, next) => {
     res.json({ users });
+    console.log(users);
     next();
 };
-const getUserByid = (req, res, next) => {
-    let resUser = users.find((e) => e.id === req.params.id);
-    if (resUser) res.json(resUser);
-    else res.status(404).send('El usuario no existe');
-    next();
-};
-const postUser = (req, res) => {
+
+const postUser = (req, res, next) => {
     let data = req.body;
     if (data.hasOwnProperty('name') && data.hasOwnProperty('email')) {
         data.id = users.length + 1;
@@ -22,8 +18,15 @@ const postUser = (req, res) => {
         console.log(data);
         res.send(`recibido con la id ${data.id}`);
     } else res.status('400').send('pusiste mal los datos');
+    next();
 }
 
+const getUserById = (req, res, next) => {
+    let resUser = users.find((e) => e.id === req.params.id);
+    if (resUser) res.json(resUser);
+    else res.status(404).send('El usuario no existe');
+    next();
+};
 
 
-module.exports = { getUser, getUserByid, postUser };
+module.exports = { getUser, getUserById, postUser };
