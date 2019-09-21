@@ -17,6 +17,10 @@ router.get('/products', (req, res) => {
     res.sendFile(path.join(__dirname, '../pages/upslabardie.html'))
     //se devuelve/sirve el vínculo
 });
+router.get('/users', (req, res) => {
+    res.sendFile(path.join(__dirname, '../pages/users.html'))
+    //se devuelve/sirve una página web
+});
 
 
 //Api routes//

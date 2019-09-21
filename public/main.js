@@ -30,3 +30,18 @@ const initialize = () => {
 };
 
 //mandar datos
+
+//Object literal
+
+const objectLiteral = prop => {
+    const cases = {
+        casa:'pepito',
+        perro: () => {/*cosas*/},
+        gato: {...properties},
+        default: () => {/*cosas*/}
+    }
+    return cases.hasOwnProperty(prop) ? cases[prop] : cases.default;
+};
+
+let result = objectLiteral(casa);
+

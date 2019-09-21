@@ -4,7 +4,7 @@ const cors = require('cors');
 const logger = require('morgan');
 const router = require('./modules/router')
 const server = express();
-const port = 3000;
+const port = 5000;
 
 server.use(bodyParser.urlencoded({
     extended: true

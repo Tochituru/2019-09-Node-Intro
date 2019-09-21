@@ -4,3 +4,4 @@ API
 API REST
 - Ciertas convenciones que sigue la api para conseguir esa información
 
+- Seguir convenciones propias: si llamo todos los archivos que afectan lo mismo (tipo api y función desde el cliente) de la misma manera o si les agrego "api" "fn", etc.

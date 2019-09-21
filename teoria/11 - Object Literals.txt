@@ -1,0 +1,16 @@
+Para validaciones binarias, es suficiente con realizar un if/if-else
+
+Para validaciones abiertas, conviene hacer "case switch", que es más performante y escalable que un if-else con muchos casos. Porque es declarativo, no condicional: "cuando x vale esto, y vale esto, etc."
+
+A partir de eso, hay una estructra más performante que se llama Object Literal.
+
+Es un objeto cuyas propiedades corresponden de forma literal a lo que queremos evaluar.
+(ver main.js)
+Podemos incluir objetos, funciones, strings, etc.
+Esto solo funciona cuando son casos literales.
+Si la propiedad no existe, hacemos una propiedad default que haga lo que queramos y un ternario.
+
+con cases[prop] ==> accedemos a la posición específica (el índice cuando es número) de la propiedad. Cuando incluimos un texto, accedemos dinámicamente a la propiedad de un objeto.
+
+Esto solo sirve para ver si tengo lo que me estás pasando, no evaluarlo. "Sé que tengo un valor, y el valor puede ser uno de estos casos".
+
